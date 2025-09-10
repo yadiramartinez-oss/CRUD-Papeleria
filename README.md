@@ -19,30 +19,38 @@ Este proyecto es una aplicación que utiliza **Spring Boot 3** para el backend y
   - **Backend**: `http://localhost:8080`
   - **Frontend**: `http://localhost:4200`
 
-## Configuración de Base de Datos
-  -CREATE DATABASE Papeleria;
-  -USE Papeleria;
-  
-  -CREATE TABLE categorias (
-      -id INT AUTO_INCREMENT PRIMARY KEY,
-      -nombre VARCHAR(60) UNIQUE NOT NULL,
-      -descripcion TEXT,
-      -activo BOOLEAN DEFAULT TRUE,
-      -created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      -updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-  -);
-  -CREATE TABLE productos (
-      -id INT AUTO_INCREMENT PRIMARY KEY,
-      -nombre VARCHAR(100) UNIQUE NOT NULL,
-      -sku VARCHAR(30) UNIQUE NOT NULL,
-      -precio DECIMAL(10, 2) CHECK (precio >= 0),
-      -stock INT CHECK (stock >= 0),
-      -categoria_id INT,
-      -activo BOOLEAN DEFAULT TRUE,
-      -created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      -updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-      -FOREIGN KEY (categoria_id) REFERENCES categorias(id)
-  -);
-  
-  SELECT * FROM categorias;
-  SELECT * FROM productos;
+### Crear la Base de Datos
+
+Ejecuta los siguientes comandos SQL para crear la base de datos **Papeleria** y sus tablas en tu servidor MySQL:
+
+```sql
+-- Crear la base de datos
+CREATE DATABASE Papeleria;
+USE Papeleria;
+
+-- Crear la tabla 'categorias'
+CREATE TABLE categorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(60) UNIQUE NOT NULL,
+    descripcion TEXT,
+    activo BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+-- Crear la tabla 'productos'
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) UNIQUE NOT NULL,
+    sku VARCHAR(30) UNIQUE NOT NULL,
+    precio DECIMAL(10, 2) CHECK (precio >= 0),
+    stock INT CHECK (stock >= 0),
+    categoria_id INT,
+    activo BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (categoria_id) REFERENCES categorias(id)
+);
+
+-- Consultar las tablas
+SELECT * FROM categorias;
+SELECT * FROM productos;  
