@@ -1,0 +1,40 @@
+.navbar {
+  padding: 10px 20px; /* Espaciado del navbar */
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.nav-item {
+  margin-left: 15px;
+}
+
+.nav-link {
+  font-size: 16px;
+  color: #114da2;
+  text-decoration: none;
+  border: none;
+}
+
+.nav-link:hover {
+  color: #007bff;
+  background-color: transparent;
+}
+
+.nav-item + .nav-item::before {
+  content: "|";
+  margin-right: 10px;
+  color: #007bff;
+}
+
+/* Estilo para los contenidos */
+.content {
+  text-align: center;
+  margin-top: 50px;
+}

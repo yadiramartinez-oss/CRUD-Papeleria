@@ -1,0 +1,98 @@
+/* Contenedor del encabezado (botón + barra de búsqueda) */
+.header {
+  display: flex;
+  justify-content: space-between; /* Espaciado entre el botón y la barra */
+  align-items: center; /* Alinea verticalmente el contenido */
+  width: 100%;
+  padding: 0 15px; /* Añadimos margen horizontal a la izquierda y derecha */
+}
+
+/* Estilo para el botón "Añadir categoría" */
+.add-category-btn {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  background-color: #096fec;
+  width: auto;
+  color: white;
+  outline: none;
+  border: none;
+}
+.add-category-btn mat-icon {
+  color: white; /* Cambia también el color del icono a blanco */
+   margin-right: 8px;
+}
+
+.add-category-btn:hover {
+  background-color: #368cf4;
+}
+
+/* Barra de búsqueda */
+.search-container {
+  display: flex;
+  justify-content: flex-end; /* Alineación de la barra de búsqueda a la derecha */
+  width: 50%; /* El ancho de la barra puede ajustarse, pero recomiendo mantenerlo en un porcentaje */
+  padding: 0 15px; 
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 50px; /* Bordes redondeados */
+  background-color: #f5f5f5; /* Fondo gris claro */
+  padding: 0 15px; 
+}
+
+/* Icono de la lupa */
+.search-icon {
+  color: #757575; /* Gris oscuro */
+  font-size: 1.5rem;
+  margin-left: 8px;
+}
+
+/* Estilo del botón de limpiar (X) */
+button.mat-icon-button {
+  color: #757575;
+  margin-right: 8px;
+  padding: 0;
+}
+
+button.mat-icon-button:hover {
+  background-color: #e0e0e0; /* Fondo claro al hacer hover */
+}
+
+
+
+
+
+/* Contenedor de la tabla */
+.table-container {
+  margin-top: 2rem;
+  overflow-x: auto;
+  padding: 15px 15px;
+}
+
+button.btn.btn-link {
+  background-color: transparent !important; 
+  border: none !important;  /* Elimina el borde */
+  box-shadow: none !important;  /* Elimina cualquier sombra */
+  padding: 0 !important;  /* Elimina el padding adicional de los botones */
+}
+
+/* Ajustar el tamaño y color de los iconos dentro de los botones */
+button.btn i {
+  font-size: 24px;  /* Ajusta el tamaño del icono */
+  color: inherit;  /* El color del icono hereda del color del botón */
+}
+/* Añadir separación de 10px entre los botones */
+button.btn.btn-link + button.btn.btn-link {
+  margin-left: 10px;  /* Agregar margen izquierdo al segundo botón */
+}
+
+/* Efecto hover para los iconos (solo cuando el ratón pasa por encima del icono) */
+button.btn:hover i {
+  opacity: 0.7;  /* Añade un efecto de opacidad al pasar el ratón */
+}
