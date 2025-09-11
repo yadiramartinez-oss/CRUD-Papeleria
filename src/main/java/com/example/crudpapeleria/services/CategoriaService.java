@@ -1,8 +1,10 @@
 package com.example.crudpapeleria.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+//import org.springframework.data.domain.Page;
+//import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.example.crudpapeleria.model.Categoria;
@@ -17,8 +19,14 @@ public class CategoriaService {
         return categoriaRepository.save(categoria);
     }
 
-    public Page<Categoria> obtenerCategorias(PageRequest pageRequest) {
-        return categoriaRepository.findAll(pageRequest);
+    /*
+     * public Page<Categoria> obtenerCategorias(PageRequest pageRequest) {
+     * return categoriaRepository.findAll(pageRequest);
+     * }
+     */
+
+    public List<Categoria> obtenerCategorias() {
+        return categoriaRepository.findAll(); // Devuelve todas las categorías
     }
 
     public Categoria obtenerCategoriaPorId(Long id) {
