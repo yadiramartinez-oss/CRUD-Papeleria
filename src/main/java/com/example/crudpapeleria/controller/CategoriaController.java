@@ -18,7 +18,7 @@ public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<?> crearCategoria(@Validated @RequestBody Categoria categoria, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             StringBuilder errorMessages = new StringBuilder();
@@ -27,10 +27,13 @@ public class CategoriaController {
             });
             return ResponseEntity.badRequest().body(errorMessages.toString()); // Mostrar errores de validación
         }
-        System.out.println("Datos recibidos: " + categoria);
 
+        // Crear la categoría
         Categoria nuevaCategoria = categoriaService.crearCategoria(categoria);
-        return new ResponseEntity<>(nuevaCategoria, HttpStatus.CREATED);
+
+        // Devolver mensaje de éxito con el objeto de categoría
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Categoría agregada con éxito: " + nuevaCategoria.getId());
     }
 
     @GetMapping("/all")

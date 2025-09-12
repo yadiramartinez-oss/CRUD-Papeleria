@@ -2,8 +2,8 @@ package com.example.crudpapeleria.model;
 
 import jakarta.persistence.*;
 import java.util.Set;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "categorias")
@@ -18,6 +18,7 @@ public class Categoria {
     @Column(name = "nombre", unique = true, nullable = false, length = 60)
     private String nombre;
 
+    @Size(min = 0, max = 255, message = "La descripción no debe de exceder los 255 caracteres")
     @Column(name = "descripcion", length = 255)
     private String descripcion;
 
@@ -61,10 +62,10 @@ public class Categoria {
     }
 
     public Set<Producto> getProductos() {
-        return productos; // CORREGIDO: Usar "Producto" con P mayúscula
+        return productos;
     }
 
     public void setProductos(Set<Producto> productos) {
-        this.productos = productos; // CORREGIDO: Usar "Producto" con P mayúscula
+        this.productos = productos;
     }
 }
