@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriasService {
 
-  private apiUrl = 'http://localhost:8080/api/categorias'; 
+  private readonly apiUrl = 'http://localhost:8080/api/categorias'; 
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
+  addCategoria(categoria: any): Observable<any> {
+    //return of({ success: true });  // Simula una respuesta exitosa
+    return this.http.post<any>(`${this.apiUrl}/create`, categoria);
+  }
   
   getCategorias(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/all`);

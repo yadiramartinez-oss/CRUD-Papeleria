@@ -3,14 +3,14 @@
   <form>
     <mat-form-field appearance="fill">
       <mat-label>Nombre</mat-label>
-      <input matInput placeholder="Ingrese el nombre de la categoría">
+      <input matInput placeholder="Ingrese el nombre de la categoría" [(ngModel)]="nombre" name="nombre">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Descripción</mat-label>
-      <input matInput placeholder="Ingrese la descripción de la categoría">
+      <input matInput placeholder="Ingrese la descripción de la categoría" [(ngModel)]="descripcion" name="descripcion">
     </mat-form-field>
 
-    <button type="button" class="btn btn-outline-primary">Guardar</button>
+    <button type="button" class="btn btn-outline-primary" (click)="guardar()">Guardar</button>
   </form>
 </div>

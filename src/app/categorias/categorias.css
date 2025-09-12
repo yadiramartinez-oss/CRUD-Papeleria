@@ -42,8 +42,8 @@
   width: 100%;
   max-width: 400px;
   border-radius: 50px; /* Bordes redondeados */
-  background-color: #f5f5f5; /* Fondo gris claro */
   padding: 0 15px; 
+  padding-top: 20px;
 }
 
 /* Icono de la lupa */
@@ -51,17 +51,6 @@
   color: #757575; /* Gris oscuro */
   font-size: 1.5rem;
   margin-left: 8px;
-}
-
-/* Estilo del botón de limpiar (X) */
-button.mat-icon-button {
-  color: #757575;
-  margin-right: 8px;
-  padding: 0;
-}
-
-button.mat-icon-button:hover {
-  background-color: #e0e0e0; /* Fondo claro al hacer hover */
 }
 
 

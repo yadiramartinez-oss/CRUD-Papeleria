@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input'; // Necesario para matI
 import { CommonModule } from '@angular/common'; 
 import { MatDialog } from '@angular/material/dialog';  // Importa MatDialog
 import { Nuevacategoria } from './nuevacategoria/nuevacategoria'; // Ajusta la ruta según corresponda
+import { HttpClientModule } from '@angular/common/http';
 
 
 export interface Categoria {
@@ -20,7 +21,7 @@ export interface Categoria {
 @Component({
   selector: 'app-categorias',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, FormsModule, MatFormFieldModule, MatInputModule, CommonModule],
+  imports: [MatTableModule, MatIconModule, FormsModule, MatFormFieldModule, MatInputModule, CommonModule, HttpClientModule],
   templateUrl: './categorias.html',
   styleUrls: ['./categorias.css']
 })
@@ -32,13 +33,13 @@ export class Categorias implements OnInit {
   filteredDataSource: Categoria[] = [];
   searchText: string = '';
 
-  constructor(private categoriasService: CategoriasService,
+  constructor(private readonly categoriasService: CategoriasService,
   public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.categoriasService.getCategorias().subscribe(data => {
       this.dataSource = data;
-      this.filteredDataSource = [...this.dataSource];  // Inicializamos el filtro con todas las categorías
+      this.filteredDataSource = [...this.dataSource];
       console.log(this.filteredDataSource);
     });
   }
@@ -51,13 +52,13 @@ export class Categorias implements OnInit {
     );
   }
 
-  // Limpiar la búsqueda
   clearSearch(): void {
     this.searchText = '';
-    this.applyFilter(); // Mostrar todas las categorías al limpiar
+    this.applyFilter(); 
   }
 
   abrirFormulario(): void {
+    console.log('El modal se ha abierto');
     const dialogRef = this.dialog.open(Nuevacategoria, {
       width: '600px',
       height: 'auto',
@@ -69,15 +70,11 @@ export class Categorias implements OnInit {
     });
   }
 
-  // Editar una categoría
   editarCategoria(id: number): void {
     console.log('Editar categoría con ID:', id);
-    // Lógica para editar la categoría
   }
 
-  // Eliminar una categoría
   eliminarCategoria(id: number): void {
     console.log('Eliminar categoría con ID:', id);
-    // Lógica para eliminar la categoría
   }
 }
