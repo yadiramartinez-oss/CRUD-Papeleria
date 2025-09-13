@@ -14,9 +14,8 @@ export class CategoriasService {
 
   addCategoria(categoria: any): Observable<any> {
     //return of({ success: true });  // Simula una respuesta exitosa
-    return this.http.post<any>(`${this.apiUrl}/create`, categoria);
+return this.http.post(this.apiUrl + '/create', categoria, { responseType: 'text' as 'json' });  
   }
-  
   getCategorias(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/all`);
   }

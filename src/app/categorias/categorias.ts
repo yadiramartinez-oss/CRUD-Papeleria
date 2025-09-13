@@ -37,11 +37,19 @@ export class Categorias implements OnInit {
   public dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.cargarCategorias();
+  }
+
+  cargarCategorias(): void {
     this.categoriasService.getCategorias().subscribe(data => {
       this.dataSource = data;
-      this.filteredDataSource = [...this.dataSource];
-      console.log(this.filteredDataSource);
+      this.ordenarCategorias();
+      this.applyFilter();
     });
+  }
+
+  ordenarCategorias(): void {
+    this.dataSource.sort((a, b) => a.nombre.localeCompare(b.nombre));
   }
 
   applyFilter(): void {
@@ -67,6 +75,10 @@ export class Categorias implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('El modal se ha cerrado');
+      this.cargarCategorias();
+      /*if (result) {
+        this.cargarCategorias();
+      }*/
     });
   }
 

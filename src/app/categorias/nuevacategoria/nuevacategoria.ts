@@ -19,7 +19,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class Nuevacategoria {
 
-  nombre: string = 'Hola';
+  nombre: string = '';
   descripcion: string = '';
 static {
     console.log('Presion 0.1');  // Este log se ejecutará cuando se cargue la clase
