@@ -4,7 +4,8 @@
   justify-content: space-between; /* Espaciado entre el botón y la barra */
   align-items: center; /* Alinea verticalmente el contenido */
   width: 100%;
-  padding: 0 15px; /* Añadimos margen horizontal a la izquierda y derecha */
+  padding: 0 25px; /* Añadimos margen horizontal a la izquierda y derecha */
+
 }
 
 /* Estilo para el botón "Añadir categoría" */
@@ -30,28 +31,18 @@
 }
 
 /* Barra de búsqueda */
-.search-container {
+.search-wrapper {
   display: flex;
-  justify-content: flex-end; /* Alineación de la barra de búsqueda a la derecha */
-  width: 50%; /* El ancho de la barra puede ajustarse, pero recomiendo mantenerlo en un porcentaje */
-  padding: 0 15px; 
-}
-
-/* Barra de búsqueda */
-.search-bar {
-  width: 100%;
+  align-items: center;
   max-width: 400px;
-  border-radius: 50px; /* Bordes redondeados */
-  padding: 0 15px; 
-  padding-top: 20px;
+  width: 100%;
+  position: relative;
+  padding-top: 30px;
+}
+.search-bar {
+  flex-grow: 1;
 }
 
-/* Icono de la lupa */
-.search-icon {
-  color: #757575; /* Gris oscuro */
-  font-size: 1.5rem;
-  margin-left: 8px;
-}
 
 
 

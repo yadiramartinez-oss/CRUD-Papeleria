@@ -6,10 +6,16 @@
   </button>
 
   <!-- Barra de búsqueda (Derecha) -->
-  <div class="search-container">
-    <mat-form-field class="search-bar" appearance="fill">
-      <mat-icon matPrefix class="search-icon">search</mat-icon>
-      <input matInput [(ngModel)]="searchText" (ngModelChange)="applyFilter()" placeholder="Buscar categoría" class="search-input">
+  <div class="search-wrapper">
+    <mat-form-field class="search-bar" appearance="outline">
+      <mat-icon matPrefix>search</mat-icon>
+      <input
+        matInput
+        placeholder="Buscar categoría"
+        [(ngModel)]="searchText"
+        (ngModelChange)="applyFilter()"
+        autocomplete="off"
+      />
     </mat-form-field>
   </div>
 </div>

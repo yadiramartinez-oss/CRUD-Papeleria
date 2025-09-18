@@ -13,9 +13,9 @@ export class CategoriasService {
   constructor(private readonly http: HttpClient) {}
 
   addCategoria(categoria: any): Observable<any> {
-    //return of({ success: true });  // Simula una respuesta exitosa
-return this.http.post(this.apiUrl + '/create', categoria, { responseType: 'text' as 'json' });  
+    return this.http.post(this.apiUrl + '/create', categoria, { responseType: 'text' as 'json' });  
   }
+  
   getCategorias(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/all`);
   }

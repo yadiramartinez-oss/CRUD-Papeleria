@@ -1,0 +1,13 @@
+/* Opcional: estilos para el scroll y tabla */
+.mat-dialog-content {
+  min-width: 400px;
+  max-width: 600px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  margin-bottom: 1rem;
+}

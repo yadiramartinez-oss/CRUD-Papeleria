@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Editar Categoría</h2>
+
+<mat-dialog-content>
+
+  <form #form="ngForm" novalidate>
+
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="categoria.nombre" name="nombre" (ngModelChange)="validarNombre()" required minlength="3" maxlength="60" />
+      <mat-error *ngIf="!nombreValido">El nombre debe tener entre 3 y 60 caracteres.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput [(ngModel)]="categoria.descripcion" name="descripcion" (ngModelChange)="validarDescripcion()" maxlength="255" rows="3"></textarea>
+      <mat-error *ngIf="!descripcionValida">La descripción no puede superar los 255 caracteres.</mat-error>
+    </mat-form-field>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button color="primary" (click)="guardar()" [disabled]="!nombreValido || !descripcionValida">Guardar</button>
+</mat-dialog-actions>
