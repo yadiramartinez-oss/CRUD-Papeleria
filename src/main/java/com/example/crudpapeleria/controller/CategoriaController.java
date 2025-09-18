@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.crudpapeleria.model.Categoria;
 import com.example.crudpapeleria.services.CategoriaService;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @RestController
 @RequestMapping("/api/categorias")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,13 +27,9 @@ public class CategoriaController {
             bindingResult.getAllErrors().forEach(error -> {
                 errorMessages.append(error.getDefaultMessage()).append("\n");
             });
-            return ResponseEntity.badRequest().body(errorMessages.toString()); // Mostrar errores de validación
+            return ResponseEntity.badRequest().body(errorMessages.toString());
         }
-
-        // Crear la categoría
         Categoria nuevaCategoria = categoriaService.crearCategoria(categoria);
-
-        // Devolver mensaje de éxito con el objeto de categoría
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Categoría agregada con éxito: " + nuevaCategoria.getId());
     }
@@ -51,9 +49,17 @@ public class CategoriaController {
         return ResponseEntity.ok(categoriaService.actualizarCategoria(id, categoria));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminarCategoria(@PathVariable Long id) {
-        categoriaService.eliminarCategoria(id);
-        return ResponseEntity.noContent().build();
+        try {
+            categoriaService.eliminarCategoria(id);
+            return ResponseEntity.noContent().build();
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
+
 }

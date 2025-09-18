@@ -3,9 +3,11 @@ package com.example.crudpapeleria.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 //import org.springframework.data.domain.Page;
 //import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.crudpapeleria.model.Categoria;
 import com.example.crudpapeleria.repository.CategoriaRepository;
@@ -42,8 +44,16 @@ public class CategoriaService {
     }
 
     public void eliminarCategoria(Long id) {
-        Categoria categoria = obtenerCategoriaPorId(id);
-        categoria.setActivo(false);
-        categoriaRepository.save(categoria);
+        try {
+            Categoria categoria = obtenerCategoriaPorId(id);
+            System.out.println("Categoria encontrada: " + categoria.getNombre());
+            categoria.setActivo(false);
+            categoriaRepository.save(categoria);
+            System.out.println("Categoria marcada como inactiva y guardada");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
+
 }
